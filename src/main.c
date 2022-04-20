@@ -30,7 +30,6 @@
 #include "handle_get_printable_amount.h"
 #include "handle_check_address.h"
 
-
 unsigned char G_io_seproxyhal_spi_buffer[IO_SEPROXYHAL_BUFFER_SIZE_B];
 
 void ui_idle(void);
@@ -192,7 +191,7 @@ void handleGetWalletId(volatile unsigned int *tx) {
     THROW(0x9000);
 }
 
-#endif // HAVE_WALLET_ID_SDK
+#endif  // HAVE_WALLET_ID_SDK
 
 void handleApdu(unsigned int *flags, unsigned int *tx) {
     unsigned short sw = 0;
@@ -207,7 +206,7 @@ void handleApdu(unsigned int *flags, unsigned int *tx) {
                 return;
             }
 
-#endif // HAVE_WALLET_ID_SDK
+#endif  // HAVE_WALLET_ID_SDK
 
             if (G_io_apdu_buffer[OFFSET_CLA] != CLA) {
                 THROW(0x6E00);

@@ -19,10 +19,7 @@
 
 #include "tokens.h"
 
-const tokenDefinition_t const TOKENS_EXTRA[NUM_TOKENS_EXTRA] = {
-
-
-};
+const tokenDefinition_t const TOKENS_EXTRA[NUM_TOKENS_EXTRA] = {};
 
 #endif
 
@@ -30,7 +27,6 @@ const tokenDefinition_t const TOKENS_EXTRA[NUM_TOKENS_EXTRA] = {
 
 #include "tokens.h"
 
-const tokenDefinition_t const TOKENS_PLATON[NUM_TOKENS_PLATON] = {
-};
+const tokenDefinition_t const TOKENS_PLATON[NUM_TOKENS_PLATON] = {};
 
 #endif

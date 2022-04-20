@@ -18,17 +18,16 @@ const uint8_t* const PRC721_SELECTORS[NUM_PRC721_SELECTORS] = {PRC721_APPROVE_SE
 
 // All internal alias names start with 'minus'
 
-const internalLatPlugin_t INTERNAL_LAT_PLUGINS[] = {
-    {prc20_plugin_available_check,
-     (const uint8_t**) PRC20_SELECTORS,
-     NUM_PRC20_SELECTORS,
-     "prc20",
-     prc20_plugin_call},
+const internalLatPlugin_t INTERNAL_LAT_PLUGINS[] = {{prc20_plugin_available_check,
+                                                     (const uint8_t**) PRC20_SELECTORS,
+                                                     NUM_PRC20_SELECTORS,
+                                                     "prc20",
+                                                     prc20_plugin_call},
 
-    {prc721_plugin_available_check,
-     (const uint8_t**) PRC721_SELECTORS,
-     NUM_PRC721_SELECTORS,
-     "prc721",
-     prc721_plugin_call},
+                                                    {prc721_plugin_available_check,
+                                                     (const uint8_t**) PRC721_SELECTORS,
+                                                     NUM_PRC721_SELECTORS,
+                                                     "prc721",
+                                                     prc721_plugin_call},
 
-    {NULL, NULL, 0, "", NULL}};
+                                                    {NULL, NULL, 0, "", NULL}};

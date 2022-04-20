@@ -65,7 +65,7 @@ static const uint8_t LEDGER_SIGNATURE_PUBLIC_KEY[] = {
 
 #else
 
-#define NUM_TOKENS_PLATON         1102
+#define NUM_TOKENS_PLATON 1102
 
 extern tokenDefinition_t const TOKENS_PLATON[NUM_TOKENS_PLATON];
 

@@ -7,7 +7,7 @@
 bool copy_transaction_parameters(create_transaction_parameters_t* sign_transaction_params,
                                  chain_config_t* config) {
     // first copy parameters to stack, and then to global data.
-    // We need this "trick" as the input data position can overlap with app-ethereum globals
+    // We need this "trick" as the input data position can overlap with app-platon globals
     txStringProperties_t stack_data;
     memset(&stack_data, 0, sizeof(stack_data));
     strncpy(stack_data.fullAddress,
@@ -36,7 +36,7 @@ bool copy_transaction_parameters(create_transaction_parameters_t* sign_transacti
                    sizeof(stack_data.fullAmount));
 
     // If the amount is a fee, its value is nominated in ETH even if we're doing an PRC20 swap
-    strcpy(ticker, config->coinName);
+    strlcpy(ticker, config->coinName, MAX_TICKER_LEN);
     decimals = WEI_TO_ETHER;
     amountToString(sign_transaction_params->fee_amount,
                    sign_transaction_params->fee_amount_length,

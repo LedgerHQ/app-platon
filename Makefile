@@ -28,7 +28,7 @@ APP_LOAD_PARAMS += --path "45'"
 # Samsung temporary implementation for wallet ID on 0xda7aba5e/0xc1a551c5
 APP_LOAD_PARAMS += --path "1517992542'/1101353413'"
 
-APPVERSION_M=1
+APPVERSION_M=2
 APPVERSION_N=0
 APPVERSION_P=0
 APPVERSION=$(APPVERSION_M).$(APPVERSION_N).$(APPVERSION_P)
@@ -41,7 +41,7 @@ endif
 ifeq ($(CHAIN),platon)
 # Lock the application on its standard path for 1.5. Please complain if non compliant
 APP_LOAD_PARAMS += --path "44'/486'"
-DEFINES += CHAINID_UPCASE=\"PLATON\" CHAINID_COINNAME=\"LAT\" CHAIN_KIND=CHAIN_KIND_PLATON CHAIN_ID=100 CHAIN_HRP=\"lat\"
+DEFINES += CHAINID_UPCASE=\"PLATON\" CHAINID_COINNAME=\"LAT\" CHAIN_KIND=CHAIN_KIND_PLATON CHAIN_ID=210425 CHAIN_HRP=\"lat\"
 APPNAME = "PlatON"
 DEFINES_LIB=
 APP_LOAD_FLAGS=--appFlags 0xa40
@@ -197,6 +197,14 @@ load: all
 
 delete:
 	python3 -m ledgerblue.deleteApp $(COMMON_DELETE_PARAMS)
+	
+install_tests:
+	cd tests && (yarn install || sudo yarn install)
+
+run_tests:
+	cd tests && (yarn test || sudo yarn test)
+
+test: install_tests run_tests
 
 # import generic rules from the sdk
 include $(BOLOS_SDK)/Makefile.rules
@@ -205,4 +213,4 @@ include $(BOLOS_SDK)/Makefile.rules
 dep/%.d: %.c Makefile
 
 listvariants:
-	@echo VARIANTS CHAIN platon
+	@echo VARIANTS CHAIN platon 

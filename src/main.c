@@ -65,6 +65,7 @@ void reset_app_context() {
     memset((uint8_t *) &tmpCtx, 0, sizeof(tmpCtx));
     memset((uint8_t *) &txContext, 0, sizeof(txContext));
     memset((uint8_t *) &tmpContent, 0, sizeof(tmpContent));
+    memset((uint8_t *) &strings, 0, sizeof(strings_t));
 }
 
 void ui_idle(void) {
@@ -620,7 +621,7 @@ __attribute__((section(".boot"))) int main(int arg0) {
     os_boot();
 
     if (!arg0) {
-        // called from dashboard as standalone eth app
+        // called from dashboard as standalone lat app
         coin_main(NULL);
         return 0;
     }
@@ -632,11 +633,11 @@ __attribute__((section(".boot"))) int main(int arg0) {
     }
     switch (args->command) {
         case RUN_APPLICATION:
-            // called as ethereum from altcoin or plugin
+            // called as Lat from altcoin or plugin
             coin_main(args->chain_config);
             break;
         default:
-            // called as ethereum or altcoin library
+            // called as Lat or altcoin library
             library_main(args);
     }
 #endif

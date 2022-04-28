@@ -6,6 +6,11 @@
 #include "lat_plugin_handler.h"
 #include "ux.h"
 
+#ifdef TARGET_NANOS
+// This function is not exported by the SDK
+void ux_layout_paging_redisplay_by_addr(unsigned int stack_slot);
+#endif
+
 typedef enum {
 
     PLUGIN_UI_INSIDE = 0,
@@ -16,7 +21,7 @@ typedef enum {
 void computeFees(char *displayBuffer, uint32_t displayBufferSize);
 
 void plugin_ui_get_id() {
-    ethQueryContractID_t pluginQueryContractID;
+    latQueryContractID_t pluginQueryContractID;
     lat_plugin_prepare_query_contract_ID(&pluginQueryContractID,
                                          strings.tmp.tmp,
                                          sizeof(strings.tmp.tmp),
@@ -30,7 +35,7 @@ void plugin_ui_get_id() {
 }
 
 void plugin_ui_get_item() {
-    ethQueryContractUI_t pluginQueryContractUI;
+    latQueryContractUI_t pluginQueryContractUI;
     lat_plugin_prepare_query_contract_UI(&pluginQueryContractUI,
                                          dataContext.tokenContext.pluginUiCurrentItem,
                                          strings.tmp.tmp,

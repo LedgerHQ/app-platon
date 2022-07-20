@@ -28,7 +28,7 @@ typedef struct tokenDefinition_t {
     uint8_t contractName[ADDRESS_LENGTH];
 #endif
     uint8_t address[ADDRESS_LENGTH];
-    uint8_t ticker[MAX_TICKER_LEN];
+    char ticker[MAX_TICKER_LEN];
     uint8_t decimals;
 } tokenDefinition_t;
 
@@ -65,7 +65,7 @@ static const uint8_t LEDGER_SIGNATURE_PUBLIC_KEY[] = {
 
 #else
 
-#define NUM_TOKENS_PLATON         1102
+#define NUM_TOKENS_PLATON 1102
 
 extern tokenDefinition_t const TOKENS_PLATON[NUM_TOKENS_PLATON];
 

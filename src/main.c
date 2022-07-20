@@ -30,7 +30,6 @@
 #include "handle_get_printable_amount.h"
 #include "handle_check_address.h"
 
-
 unsigned char G_io_seproxyhal_spi_buffer[IO_SEPROXYHAL_BUFFER_SIZE_B];
 
 void ui_idle(void);
@@ -66,6 +65,7 @@ void reset_app_context() {
     memset((uint8_t *) &tmpCtx, 0, sizeof(tmpCtx));
     memset((uint8_t *) &txContext, 0, sizeof(txContext));
     memset((uint8_t *) &tmpContent, 0, sizeof(tmpContent));
+    memset((uint8_t *) &strings, 0, sizeof(strings_t));
 }
 
 void ui_idle(void) {
@@ -192,7 +192,7 @@ void handleGetWalletId(volatile unsigned int *tx) {
     THROW(0x9000);
 }
 
-#endif // HAVE_WALLET_ID_SDK
+#endif  // HAVE_WALLET_ID_SDK
 
 void handleApdu(unsigned int *flags, unsigned int *tx) {
     unsigned short sw = 0;
@@ -207,7 +207,7 @@ void handleApdu(unsigned int *flags, unsigned int *tx) {
                 return;
             }
 
-#endif // HAVE_WALLET_ID_SDK
+#endif  // HAVE_WALLET_ID_SDK
 
             if (G_io_apdu_buffer[OFFSET_CLA] != CLA) {
                 THROW(0x6E00);
@@ -621,7 +621,7 @@ __attribute__((section(".boot"))) int main(int arg0) {
     os_boot();
 
     if (!arg0) {
-        // called from dashboard as standalone eth app
+        // called from dashboard as standalone lat app
         coin_main(NULL);
         return 0;
     }
@@ -633,11 +633,11 @@ __attribute__((section(".boot"))) int main(int arg0) {
     }
     switch (args->command) {
         case RUN_APPLICATION:
-            // called as ethereum from altcoin or plugin
+            // called as Lat from altcoin or plugin
             coin_main(args->chain_config);
             break;
         default:
-            // called as ethereum or altcoin library
+            // called as Lat or altcoin library
             library_main(args);
     }
 #endif

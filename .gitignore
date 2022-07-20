@@ -1,4 +1,5 @@
 .vscode
+.idea
 # Compilation of Ledger's app
 src/glyphs.c
 src/glyphs.h
@@ -15,4 +16,8 @@ obj/
 tests/node_modules
 tests/lib
 tests/yarn-error.log
+tests/elfs/*
+tests/snapshots-tmp
 
+.vscode
+null.d
